@@ -1,0 +1,1 @@
+function [quat] = eul2quat(e)  quat = [cos(e(1)/2);sin(e(1)/2);0;0]'*([cos(e(3)/2);0;0;sin(e(3)/2)]*[cos(e(2)/2);0;sin(e(2)/2);0]');end
