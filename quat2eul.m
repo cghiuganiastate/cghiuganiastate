@@ -10,4 +10,4 @@ function [eul] = quat2eul(q)
   %test cases
   %q = [1 1 0 0; 1 0 1 1; 1 1 1 1;0 pi/2 0 0];
 end
-%urlwrite("https://github.com/cghiuganiastate/cghiuganiastate/blob/main/quaternion2.csv","quaternion2.csv")
+%urlwrite("https://raw.githubusercontent.com/cghiuganiastate/cghiuganiastate/main/quaternion2.csv","quaternion2.csv")
