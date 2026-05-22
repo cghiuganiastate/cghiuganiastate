@@ -18,9 +18,6 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
-      - name: Restore dependencies
-        run: msbuild FluidX3D.sln /t:Restore /p:Configuration=Release /p:Platform=x64
-
       - name: Build Release
         run: msbuild FluidX3D.sln /p:Configuration=Release /p:Platform=x64 /verbosity:minimal
 
@@ -29,11 +26,4 @@ jobs:
         with:
           name: FluidX3D-windows-x64
           path: bin/FluidX3D.exe
-          retention-days: 30
-
-      - name: Upload full build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: FluidX3D-windows-x64-full
-          path: bin/
           retention-days: 30
