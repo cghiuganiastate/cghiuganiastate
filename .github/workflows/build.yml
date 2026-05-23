@@ -12,18 +12,26 @@ jobs:
     runs-on: windows-2022
 
     steps:
-      - name: Checkout code
+      - name: Checkout this repo (workflow config)
         uses: actions/checkout@v4
+        with:
+          path: workflow
+
+      - name: Clone FluidX3D source
+        run: |
+          git clone --depth 1 https://github.com/ProjectPhysX/FluidX3D.git src
+        shell: bash
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
       - name: Build Release
         run: msbuild FluidX3D.sln /p:Configuration=Release /p:Platform=x64 /verbosity:minimal
+        working-directory: src
 
       - name: Upload executable artifact
         uses: actions/upload-artifact@v4
         with:
           name: FluidX3D-windows-x64
-          path: bin/FluidX3D.exe
+          path: src/bin/FluidX3D.exe
           retention-days: 30
